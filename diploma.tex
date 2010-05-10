@@ -472,7 +472,7 @@ RTTI (Run-time Type Information --- информация о типах врем�
 
 В данной работе используется метод сопоставления с образцом, т.к. машинный код для виртуального вызова имеет известную структуру, но конкретные значения регистров и констант могут различаться.
 
-Как уже было описано в разделе \ref{valgrind_section}, \code{Valgrind} передает код анализируемой программы инструменту по блокам. Экспериментально было установлено, что вызов виртуальной функции почти всегда\footnote{Исключением является только тот случай, когда формирование блока прекращается по достижению лимита в 50 машинных инструкций} попадает внутрь одного блока.
+Как уже было описано в разделе \ref{valgrind_section}, \code{Valgrind} передает код анализируемой программы инструменту по блокам. Экспериментально было установлено, что вызов виртуальной функции почти всегда\footnote{Исключением является только тот случай, когда формирование блока прекращается по достижению лимита в 50 машинных инструкций. Эксперимент показывает, что описанная ситуация возникает менее, чем в 6\% случаев, что является приемлемым в нашем подходе.} попадает внутрь одного блока.
 Далее, если имеет место вызов функции по статически неизвестному адресу, вычисляемому во время работы программы, формируется специальный указатель для блока, содержащий выражение, значение которого равно адресу функции, вызов которой происходит.
 
 Реализованный алгоритм проводит сопоставление с образцом, показанном на \lstref{vcall_valgrind_lst}, начиная с конца блока.
@@ -920,17 +920,16 @@ class x4009B0 : public x400702 {
 
     \bibitem{valgrind} Nicholas Nethercote. Julian Seward. Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation. Proceedings of ACM SIGPLAN 2007 Conference on Programming Language Design and Implementation (PLDI 2007), San Diego, California, USA, June 2007.
 
-    \bibitem{abstracttypes} Philip J. Guo. Jeff H. Perkins. Stephen McCamant. Michael D. Ernst. Dynamic Inference of Abstract Types. Proceedings of the 2006 international symposium on Software testing and analysis.
+    \bibitem{abstracttypes} Philip J. Guo. Jeff H. Perkins. Stephen McCamant. Michael D. Ernst. Dynamic Inference of Abstract Types. Proceedings of the International Symposium on Software Testing and Analysis, Portland, Maine, USA, 2006.
 
-    \bibitem{typechecking} Michael Burrows. Stephen N. Freund. Janet L. Wiener. Run-Time Type Checking for Binary Programs. International Conference on Compiler Construction, 2003.
+    \bibitem{typechecking} Michael Burrows. Stephen N. Freund. Janet L. Wiener. Run-Time Type Checking for Binary Programs. International Conference on Compiler Construction, Warsaw, Poland, April 2003.
 
-    \bibitem{cppvg} \code{http://code.google.com/p/data-race-test/wiki/cpp\_vg/}
     \bibitem{strstr} Бьерн Страуструп. Язык программирования С++. М.: Бином, 2006. 1100 с.
-    \bibitem{reversing_cpp}P. Sabanal, M. Yason. Reversing C++. Black Hat DC. 2007.
+    \bibitem{reversing_cpp}P. Sabanal, M. Yason. Reversing C++. Black Hat DC, Arlington, Virginia, USA, 2007.
     \bibitem{real_decomp} M. Van Emmerik, T. Waddington. Using a decompiler for real-world source recovery. Proceedings of 11th Working Conference on Reverse Engineering, с. 27-36. 2004.
-    \bibitem{boomerang} \code{http://boomerang.sourceforge.net/}
-    \bibitem{ida_pro} \code{http://www.idapro.com}
-    \bibitem{rekonq} \code{http://rekonq.sourceforge.net/}
+    \bibitem{boomerang} Mike Van Emmerik, Gerard Krol, Trent Waddington. A general, open source, retargetable decompiler of machine code programs. [HTML] (\code{http://boomerang.sourceforge.net})
+    \bibitem{ida_pro} Ilfak Guilfanov. The IDA Pro Disassembler and Debugger. [HTML] (\code{http://www.hex-rays.com/idapro/})
+    \bibitem{rekonq} rekonq WebKit KDE browser. [HTML] (\code{http://rekonq.sourceforge.net/})
     \bibitem{corman} Т.~Кормен, Ч.~Лейзерсон, Р.~Ривест. Алгоритмы: построение и анализ. М.: МЦНМО, 2002. 960 с.
     \bibitem{meyers} Scott Meyers. Effective C++: 55 Specific Ways to Improve Your Programs and Designs. ISBN 0-321-33487-6, 1992.
     \bibitem{aho_compilers} Альфред В. Ахо, Моника С. Лам, Рави Сети, Джеффри Д. Ульман. Компиляторы: принципы, технологии и инструментарий. — 2-е изд. — М.: Вильямс, 2008
