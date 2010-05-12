@@ -770,8 +770,30 @@ void fun(Derived *d) {
 Данный раздел содержит описание формата, используемого в ОС \code{Linux} для описания отображённой памяти процесса.
 Информация содержится в файле \code{/proc/\{pid\}/maps}, где \code{\{pid\}} --- идентификатор процесса.
 
-Файл, состоит из заголовка и последующих строк, каждая из которых описывает одно отображение. Каждая из строк содержит следующие поля.
+Файл, состоит строк, каждая из которых описывает одно отображение.
+В качестве примера часть такого файла для командной оболочки \code{zsh}, работяющей на платформе \code{x86\_64} показана на \picref{zsh_maps_lst}.
 
+\begin{figure}
+\begin{lstlisting}[basicstyle=\tiny]
+00400000-00491000 r-xp 00000000 fd:00 483439              /bin/zsh
+00690000-00691000 r--p 00090000 fd:00 483439              /bin/zsh
+00691000-00697000 rw-p 00091000 fd:00 483439              /bin/zsh
+00697000-006aa000 rw-p 00000000 00:00 0
+020fc000-02201000 rw-p 00000000 00:00 0                   [heap]
+7fea9104c000-7fea91053000 r-xp 00000000 fd:00 486810      /usr/lib64/zsh/4.3.10/zsh/zutil.so
+7fea91053000-7fea91252000 ---p 00007000 fd:00 486810      /usr/lib64/zsh/4.3.10/zsh/zutil.so
+7fea91252000-7fea91253000 r--p 00006000 fd:00 486810      /usr/lib64/zsh/4.3.10/zsh/zutil.so
+7fea91253000-7fea91254000 rw-p 00007000 fd:00 486810      /usr/lib64/zsh/4.3.10/zsh/zutil.so
+7fea91254000-7fea91277000 r-xp 00000000 fd:00 486821      /usr/lib64/zsh/4.3.10/zsh/complete.so
+7fea91277000-7fea91477000 ---p 00023000 fd:00 486821      /usr/lib64/zsh/4.3.10/zsh/complete.so
+7fea91477000-7fea91478000 r--p 00023000 fd:00 486821      /usr/lib64/zsh/4.3.10/zsh/complete.so
+7fea91478000-7fea91479000 rw-p 00024000 fd:00 486821      /usr/lib64/zsh/4.3.10/zsh/complete.so
+\end{lstlisting}
+\caption{Пример части файла \code{/proc/\{pid\}/maps} для командной оболочки \code{zsh}}
+\label{zsh_maps_lst}
+\end{figure}
+
+Каждая из строк содержит следующие поля:
 \begin{enumerate}
     \item Диапазон адресов. Например: \code{08048000-08056000}
     \item Права доступа. Например: \code{r-xp}
@@ -807,7 +829,6 @@ void fun(Derived *d) {
     \item \code{set}
     \item \code{string}
     \item \code{vector}
-    \item \code{tr1/functional}
     \item \code{tr1/unordered\_map}
     \item \code{tr1/unordered\_set}
 \end{itemize}
